@@ -1,0 +1,49 @@
+#include <cstring>
+#include <cctype>
+#include <cstdlib>
+
+int mystrcmp(const char *str1, const char *str2) {
+    while (*str1 && (*str1 == *str2)) {
+        str1++;
+        str2++;
+    }
+    return *(unsigned char *)str1 - *(unsigned char *)str2;
+}
+
+int StringToNumber(char *str) {
+    return atoi(str);
+}
+
+char *NumberToString(int number) {
+    char *buffer = new char[20];
+    std::sprintf(buffer, "%d", number);
+    return buffer;
+}
+
+char *Uppercase(char *str1) {
+    char *original = str1;
+    while (*str1) {
+        *str1 = std::toupper((unsigned char)*str1);
+        str1++;
+    }
+    return original;
+}
+
+char *Lowercase(char *str1) {
+    char *original = str1;
+    while (*str1) {
+        *str1 = std::tolower((unsigned char)*str1);
+        str1++;
+    }
+    return original;
+}
+
+char *mystrrev(char *str) {
+    int len = std::strlen(str);
+    for (int i = 0; i < len / 2; i++) {
+        char temp = str[i];
+        str[i] = str[len - i - 1];
+        str[len - i - 1] = temp;
+    }
+    return str;
+}
